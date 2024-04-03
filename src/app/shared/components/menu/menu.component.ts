@@ -1,18 +1,19 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'shared-menu',
-  standalone: true,
-  imports: [
-    CommonModule,
-  ],
-  template: `<p>menu works!</p>`,
-  styles: `
-    :host {
-      display: block;
-    }
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: `./menu.component.html`,
+  styleUrls: [],
 })
-export class MenuComponent { }
+export class MenuComponent implements OnInit{
+  public menuItems: MenuItem[] = [];
+
+  ngOnInit(){
+    this.menuItems = [
+      {label: 'New', icon: 'pi pi-fw pi-plus'},
+      {label: 'Open', icon: 'pi pi-fw pi-download'},
+      {label: 'Undo', icon: 'pi pi-fw pi-refresh'},
+    ]
+  }
+}
